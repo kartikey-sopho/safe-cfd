@@ -8,6 +8,12 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+
+import Registration from './screens/registration';
+import Login from './screens/login';
+
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -29,6 +35,18 @@ export default class App extends Component<Props> {
   }
 }
 
+
+const RootStack = createStackNavigator(
+  
+  {
+    Registration : registration,  
+    Login : login,
+  },
+  {
+    initialRouteName : 'Registration',
+  }
+
+  );
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -47,3 +65,10 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+
+export default class App extends React.Component{
+  render(){
+    return <RootStack />;
+  }
+}
